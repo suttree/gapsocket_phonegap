@@ -41,22 +41,25 @@
                 mySocket.onopen = function(){ 
                     console.log("Connection opened");
                     mySocket.send('Client registering connection open');
+                    $('#timer').html("Connection opened");
                 };
 
                 mySocket.onmessage = function(msg){
-                    alert("Received " + msg);
+                    //alert("Received " + msg);
                     console.log("Received: " + msg);
                     $('#timer').html(msg);
                 };
 
                 mySocket.onerror = function(msg){
-                    alert("Error " + msg);
+                    //alert("Error " + msg);
                     console.log("Error: " + msg);
+                    $('#timer').html(msg);
                 };
                 
                 mySocket.onclose = function(){
-                    alert("Connection closed");
+                    //alert("Connection closed");
                     console.log("Connection closed");
+                    $('#timer').html("Connection closed");
                 };
             });
         }        
