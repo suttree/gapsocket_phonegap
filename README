@@ -1,0 +1,3 @@
+Playing around with PhoneGap and socket connections.
+
+Previously I had tried using WebSockets and PhoneGap to create a mobile app that was network-aware. The https://github.com/suttree/websockets_phonegap project worked, but WebSockets falls back to xhr-polling which eats up battery life and feels like a much more brute force way of doing things than using a pure socket server. So I'm using GapSocket to replace WebSocket and writing my own socket server in order to create a better mobile experience for some experiments.
