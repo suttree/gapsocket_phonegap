@@ -18,6 +18,8 @@
     <script type="text/javascript" src="GapSocket.js"></script>
 
     <script type="text/javascript" charset="utf-8">
+        var mySocket;
+
         // If you want to prevent dragging, uncomment this section
         /*
         function preventBehavior(e) 
@@ -36,7 +38,7 @@
         function onDeviceReady()
         {
             $(document).ready(function () {
-                var mySocket = new GapSocket("173.45.236.98", "1977");
+                mySocket = new GapSocket("173.45.236.98", "1977");
 
                 mySocket.onopen = function(){ 
                     console.log("Connection opened");
@@ -62,14 +64,20 @@
                     $('#timer').html("Connection closed");
                 };
             });
-        }        
-        // tag and move the old dev.troisen.com out of the way
-        // build a tcp echo server in node (or similar)
-        // to see if the connection works over 3G, etc...
+        }
+
+        function sendMessage() {
+            mySocket.send( $('#q').val() );
+        };
+
+        // Messages are only received when one is sent locally....
+        // spinner for connection, reconnection, etc
     </script>
   </head>
   <body onload="onBodyLoad()">
   	<h1>hi</h1>
     <div id='timer'>Status...</div>
+    <input type='text' name='q' id='q' value=''>
+    <input type='submit' onclick='sendMessage()'>
   </body>
 </html>
